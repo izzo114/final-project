@@ -99,16 +99,14 @@
 
         <Button
             android:id="@+id/signup_screen"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
+            android:elevation="0dp"
             android:text="New User? Sign Up"
             android:textColor="#000"
-            app:backgroundTint="#FFFFFF"
-            android:elevation="0dp"
-            android:transitionName="login_signup_tran"/>
-
-
+            android:transitionName="login_signup_tran"
+            app:backgroundTint="#FFFFFF" />
 
 
     </LinearLayout>
@@ -116,39 +114,23 @@
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_button"
-        android:layout_width="wrap_content"
+        android:layout_width="212dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp" />
-
-
-
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp" />
 
     <Button
         android:id="@+id/google"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/custom_go_button"
-        android:drawableLeft="@drawable/ic_googleee"
-        android:paddingLeft="50dp"
-        android:paddingRight="50dp"
+        android:layout_width="215dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#AA2E2E"
+        android:drawableLeft="@drawable/ic_googllle"
         android:text="sign in with google"
-        android:textAllCaps="false"
-        android:textColor="#fff"
-        android:textSize="17sp"
-        app:backgroundTint="#AE3611" />
-
-
-
-
-
-
-
-
-
+        android:textSize="11dp"
+        android:textAlignment="gravity"/>
 
 
 </LinearLayout>
