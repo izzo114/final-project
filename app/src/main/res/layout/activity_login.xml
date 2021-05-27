@@ -6,7 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".Login"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:layout_marginTop="-20dp">
+
+
 
     <ImageView
         android:id="@+id/logo_image"
@@ -22,14 +25,18 @@
         android:fontFamily="@font/bungee"
         android:transitionName="logo_text"
         android:text="HELLO THERE, WELCOME BACK"
-        android:textSize="40sp"/>
+        android:textSize="40sp"
+        android:layout_marginTop="-20dp"/>
 
     <TextView
         android:id="@+id/slogan_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sign in to continue "
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:transitionName="logo_desc"
+        android:layout_marginTop="-15dp"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,20 +48,21 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/username"
+            android:id="@+id/Username"
             android:hint="Username"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:transitionName="user_tran"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/password"
+            android:id="@+id/Password"
             android:hint="Password"
             app:passwordToggleEnabled="true"
 
@@ -63,29 +71,34 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword"
+                android:transitionName="password_tran"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:layout_width="200dp"
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="Forget password?"
-            android:textColor="@color/black"
-            app:backgroundTint="#FFFFFF"
-            android:elevation="0dp"
-            android:layout_margin="5dp"/>
+            android:layout_margin="5dp"
+            android:text="FORGET PASSWORD" />
 
         <Button
+            android:id="@+id/go"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="#000"
+            android:onClick="loginUser"
             android:text="go"
             android:textColor="#fff"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"/>
+            android:transitionName="button_tran"
+            app:backgroundTint="#000000" />
 
         <Button
+            android:id="@+id/signup_screen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
@@ -93,13 +106,48 @@
             android:textColor="#000"
             app:backgroundTint="#FFFFFF"
             android:elevation="0dp"
-             />
-
+            android:transitionName="login_signup_tran"/>
 
 
 
 
     </LinearLayout>
+
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp" />
+
+
+
+
+    <Button
+        android:id="@+id/google"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/custom_go_button"
+        android:drawableLeft="@drawable/ic_googleee"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:text="sign in with google"
+        android:textAllCaps="false"
+        android:textColor="#fff"
+        android:textSize="17sp"
+        app:backgroundTint="#AE3611" />
+
+
+
+
+
+
+
+
 
 
 
