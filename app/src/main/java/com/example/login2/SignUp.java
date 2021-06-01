@@ -30,7 +30,7 @@ public class SignUp extends AppCompatActivity {
         regEmail=findViewById(R.id.email);
         regPhoneNo=findViewById(R.id.phoneno);
         regPassword=findViewById(R.id.pass);
-        regBtn =findViewById(R.id.go) ;
+        regBtn =findViewById(R.id.signUp) ;
         CallLogin = findViewById(R.id.login_screen);
 
        /* regBtn.setOnClickListener(new View.OnClickListener() {
@@ -55,8 +55,8 @@ public class SignUp extends AppCompatActivity {
        CallLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent Intent= new Intent(SignUp.this,Login.class);
-                startActivity(Intent);
+                Intent CallLoginIntent= new Intent(SignUp.this,Login.class);
+                startActivity(CallLoginIntent);
             }
         });
 
@@ -160,22 +160,20 @@ public class SignUp extends AppCompatActivity {
         String name = regName.getEditText().getText().toString();
         String username = regUsername.getEditText().getText().toString();
         String email = regEmail.getEditText().getText().toString();
-        String phonenom = regPhoneNo.getEditText().getText().toString();
+        String phoneno = regPhoneNo.getEditText().getText().toString();
         String password = regPassword.getEditText().getText().toString();
 
 
 
-
-         UserHelperClass helperClass = new UserHelperClass(name,username,email,phonenom,password);
+         UserHelperClass helperClass = new UserHelperClass(name,username,email,phoneno,password);
          reference.child(username).setValue(helperClass);
 
-        Intent intennt = new Intent(SignUp.this,VerifyPhoneNo.class);
-        intennt.putExtra("phonenom",phonenom);
+        Toast.makeText(this, "Your Account has been created successfully", Toast.LENGTH_SHORT).show();
+
+        Intent intennt = new Intent(SignUp.this,Project.class);
+        intennt.putExtra("phonenom",phoneno);
         startActivity(intennt);
-
-
-        Toast.makeText(this, "Your Account has been created successfully", Toast.LENGTH_LONG).show();
-
+        finish();
 
     }
 }
