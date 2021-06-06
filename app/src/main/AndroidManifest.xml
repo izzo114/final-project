@@ -15,7 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Login2">
         <activity android:name=".Project" ></activity>
-        <activity android:name=".VerifyPhoneNo" />
         <activity android:name=".SignUp" />
         <activity android:name=".Login" />
         <activity android:name=".MainActivity">

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -15,10 +16,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SignUp extends AppCompatActivity {
     TextInputLayout regName,regUsername,regEmail,regPhoneNo,regPassword;
-    Button CallLogin,regBtn;
-
+    Button regBtn;
+    TextView CallLogin;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,24 +36,7 @@ public class SignUp extends AppCompatActivity {
         regBtn =findViewById(R.id.signUp) ;
         CallLogin = findViewById(R.id.login_screen);
 
-       /* regBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rootNode = FirebaseDatabase.getInstance();
-                reference=rootNode.getReference("user");
 
-                String name = regName.getEditText().getText().toString();
-                String username = regUsername.getEditText().getText().toString();
-                String email = regEmail.getEditText().getText().toString();
-                String phoneno = regPhoneNo.getEditText().getText().toString();
-                String password = regPassword.getEditText().getText().toString();
-
-                UserHelperClass helperClass = new UserHelperClass(name,username,email,phoneno,password);
-
-                reference.child(username).setValue(helperClass);
-
-            }
-        });*/
 
        CallLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,6 +143,9 @@ public class SignUp extends AppCompatActivity {
 
         rootNode = FirebaseDatabase.getInstance();
         reference=rootNode.getReference("user");
+
+
+
         String name = regName.getEditText().getText().toString();
         String username = regUsername.getEditText().getText().toString();
         String email = regEmail.getEditText().getText().toString();
@@ -165,13 +154,12 @@ public class SignUp extends AppCompatActivity {
 
 
 
-         UserHelperClass helperClass = new UserHelperClass(name,username,email,phoneno,password);
-         reference.child(username).setValue(helperClass);
+        UserHelperClass helperClass = new UserHelperClass(name,username,email,phoneno,password);
+        reference.child(username).setValue(helperClass);
 
         Toast.makeText(this, "Your Account has been created successfully", Toast.LENGTH_SHORT).show();
 
         Intent intennt = new Intent(SignUp.this,Project.class);
-        intennt.putExtra("phonenom",phoneno);
         startActivity(intennt);
         finish();
 

@@ -48,14 +48,14 @@ public class Login extends AppCompatActivity {
 
     Button go;
     TextInputLayout username , password ;
-    TextView callSignUp ,sloganText,logoText,Guist,ForgetPass;
+    TextView callSignUp ,sloganText,logoText,Guest,ForgetPass;
     ImageView logo;
     private GoogleSignInClient mGoogleSignInClient;
     private final static int RC_SIGN_IN = 123;
     private FirebaseAuth mAuth;
     ProgressDialog pd;
 
-    @Override
+  /*  @Override
     protected void onStart() {
         super.onStart();
 
@@ -65,7 +65,7 @@ public class Login extends AppCompatActivity {
             startActivity(Iintent);
 
         }
-    }
+    }*/
 
 
     @Override
@@ -106,9 +106,9 @@ public class Login extends AppCompatActivity {
         username = findViewById(R.id.Username);
         password = findViewById(R.id.Password);
         go = findViewById(R.id.goo);
-        Guist = findViewById(R.id.guist);
+        Guest = findViewById(R.id.guest);
         ForgetPass = findViewById(R.id.forgetPass);
-        mAuth = FirebaseAuth.getInstance();
+       // mAuth = FirebaseAuth.getInstance();
 
         findViewById(R.id.google).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,11 +142,11 @@ public class Login extends AppCompatActivity {
         });
 
 
-        Guist.setOnClickListener(new View.OnClickListener() {
+        Guest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent  intentGuist = new Intent(Login.this,Project.class);
-                startActivity(intentGuist);
+                Intent  intentGuest = new Intent(Login.this,Project.class);
+                startActivity(intentGuest);
                 finish();
             }
         });
@@ -217,7 +217,6 @@ public class Login extends AppCompatActivity {
         builder.create().show();
 
     }
-
     private void beginRecovery(String email) {
         //progress dialog
         pd.setMessage("Sending Email...");
@@ -283,8 +282,11 @@ public class Login extends AppCompatActivity {
     }*/
 
 
+
+
+
     private boolean validateUsername(){
-        String val = username .getEditText().getText().toString();
+        String val = username.getEditText().getText().toString();
 
         if (val.isEmpty()){
             username.setError("Field cannot be empty");
@@ -311,7 +313,7 @@ public class Login extends AppCompatActivity {
     }
     public void loginUser(View view) {
         if (!validateUsername() | !validatePassword()){
-           return;
+            return;
         }else {
             isUser();
         }
@@ -356,12 +358,16 @@ public class Login extends AppCompatActivity {
                 }
             }
 
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
     }
+
+
+
 
 
 

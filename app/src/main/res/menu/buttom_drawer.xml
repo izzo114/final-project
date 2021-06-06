@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/ic_baseline_home_24"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="Home"/>
+
+    <item
+        android:icon="@drawable/ic_baseline_receipt_long_24"
+        android:id="@+id/ic_baseline_receipt_long_24"
+        android:title="Reseve" />
+
+    <item
+        android:id="@+id/ic_baseline_sports_24"
+        android:icon="@drawable/ic_baseline_sports_24"
+        android:title="Academy"/>
+    <item
+        android:id="@+id/ic_baseline_sports_soccer_24"
+        android:icon="@drawable/ic_baseline_sports_soccer_24"
+        android:title="League"/>
+</menu>

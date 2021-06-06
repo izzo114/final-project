@@ -23,7 +23,7 @@
         android:id="@+id/logo_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#070707"
+        android:textColor="#FFFFFF"
         android:fontFamily="@font/bungee"
         android:transitionName="logo_text"
         android:text="HELLO THERE, WELCOME BACK"
@@ -37,7 +37,7 @@
         android:layout_marginTop="-15dp"
         android:fontFamily="@font/antic"
         android:text="Sign in to continue "
-        android:textColor="#070707"
+        android:textColor="#000000"
         android:textSize="18sp"
         android:transitionName="logo_desc" />
 
@@ -92,16 +92,20 @@
 
         <Button
             android:id="@+id/goo"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/ic_facebook"
-            android:layout_gravity="center"
+            android:background="#FFFFFF"
+            android:backgroundTint="#FFFFFF"
+            android:fontFamily="serif"
             android:onClick="loginUser"
-            android:text="go"
-            android:textColor="#FFFFFF"
-            android:transitionName="button_tran" />
+            android:text="Log in"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:transitionName="button_tran"
+            app:backgroundTint="#FFFFFF" />
 
         <TextView
             android:id="@+id/signup_screen"
@@ -113,7 +117,8 @@
             android:text="New User? Sign Up"
             android:textColor="#040404"
             android:transitionName="login_signup_tran"
-            app:backgroundTint="#FDFDFD" />
+            android:padding="11dp"
+             />
 
 
     </LinearLayout>
@@ -132,22 +137,24 @@
         android:textAlignment="gravity"
         android:textColor="#040404"
         android:textSize="11dp"
-        app:backgroundTint="#FFFFFF" />
+        app:backgroundTint="#FFFFFF"
+        android:textStyle="bold"/>
 
     <TextView
-        android:id="@+id/guist"
+        android:id="@+id/guest"
         android:layout_width="215dp"
         android:layout_height="45dp"
         android:layout_gravity="center"
         android:backgroundTint="#FFFFFF"
-        android:fontFamily="@font/bungee"
-        android:text=" as  guist"
+        android:fontFamily="serif"
+        android:text="As Guest"
         android:textAlignment="center"
         android:textColor="#000000"
-        android:padding="3dp"
+        android:padding="13dp"
         android:background="@drawable/custom_fb_button"
-        android:textSize="15dp"
-        android:textStyle="bold" />
+        android:textSize="13dp"
+        android:textStyle="bold"
+        />
 
 
 
