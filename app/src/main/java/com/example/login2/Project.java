@@ -1,15 +1,7 @@
 package com.example.login2;
 
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
-
-import com.example.login2.ui.AcademyFragment;
-import com.example.login2.ui.LeagueFragment;
-import com.example.login2.ui.ReserveFragment;
-import com.example.login2.ui.home.HomeFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +12,13 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import com.example.login2.ui.AcademyFragment;
+import com.example.login2.ui.LeagueFragment;
+import com.example.login2.ui.ReserveFragment;
+import com.example.login2.ui.home.HomeFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 public class Project extends AppCompatActivity {
 
@@ -56,12 +55,7 @@ public class Project extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListner=
             new BottomNavigationView.OnNavigationItemSelectedListener() {

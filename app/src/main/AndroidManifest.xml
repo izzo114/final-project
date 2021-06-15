@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.login2"
     android:versionCode="1"
-    android:versionName="1.0"
-    package="com.example.login2">
+    android:versionName="1.0">
 
-    <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="30" />
+    <uses-sdk android:targetSdkVersion="30" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Login2">
-        <activity android:name=".Project" ></activity>
+        <activity android:name=".Playground_Details"></activity>
+        <activity android:name=".ADDplayground" />
+        <activity android:name=".profileActivity" />
+        <activity android:name=".ADD_LEAGUE" />
+        <activity android:name=".Project" />
         <activity android:name=".SignUp" />
         <activity android:name=".Login" />
         <activity android:name=".MainActivity">
@@ -23,30 +30,22 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
 
-
                 <action android:name="android.intent.action.EDIT" />
                 <action android:name="android.intent.action.INSERT" />
                 <action android:name="android.intent.action.DELETE" />
-
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
 
-
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.SEND_SMS"/>
 
 </manifest>

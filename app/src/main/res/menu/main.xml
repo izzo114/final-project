@@ -6,4 +6,10 @@
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+
+
+    <item android:title="Add League"
+        android:id="@+id/addLeague"
+        app:showAsAction="always"
+        android:icon="@drawable/addtwo" />
 </menu>
