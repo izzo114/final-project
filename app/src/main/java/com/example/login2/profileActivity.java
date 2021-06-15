@@ -74,7 +74,7 @@ public class profileActivity extends AppCompatActivity {
                     profilephone.setText(PHONE);
                     profileprice.setText(PRICE);
                     profileusername.setText(USERNAME);
-                    //kugjgklgjfc
+                    //kugjgklgjfc123510
 
                 }
 
