@@ -17,7 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Login2">
-        <activity android:name=".Playground_Details"></activity>
+        <activity android:name=".Acadmy_details"></activity>
+        <activity android:name=".Addacadamy" />
+        <activity android:name=".Playground_Details" />
         <activity android:name=".ADDplayground" />
         <activity android:name=".profileActivity" />
         <activity android:name=".ADD_LEAGUE" />
