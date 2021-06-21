@@ -1,7 +1,9 @@
 package com.example.login2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +25,8 @@ import com.google.android.material.navigation.NavigationView;
 public class Project extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
+    private NavigationView navigationView;
+    private DrawerLayout drawer;
 
 
     @Override
@@ -42,18 +46,46 @@ public class Project extends AppCompatActivity {
 
 
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
+         drawer = findViewById(R.id.drawer_layout);
+         navigationView = findViewById(R.id.nav_view);
+       navigationView.setNavigationItemSelectedListener(listener);
+
+
+
+       // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
+               R.id.nav_home, R.id.nav_profile,R.id.nav_call)
                 .setDrawerLayout(drawer)
-                .build();
+               .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
+
+
+   private NavigationView.OnNavigationItemSelectedListener listener = new NavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            int id = item.getItemId();
+            switch (id){
+                case R.id.nav_home:
+                    Toast.makeText(Project.this, "home", Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.nav_profile:
+                    Toast.makeText(Project.this, "profile", Toast.LENGTH_SHORT).show();
+                    break;
+
+
+                case R.id.nav_call:
+                    Toast.makeText(Project.this, "Contact Us", Toast.LENGTH_SHORT).show();
+                    break;
+            }
+            return true;
+        }
+    };
+
+
 
 
 
@@ -65,15 +97,19 @@ public class Project extends AppCompatActivity {
                     switch (item.getItemId()) {
                         case R.id.ic_baseline_home_24:
                             selectedFragment = new HomeFragment();
+                            getSupportActionBar().setTitle("Home");
                             break;
                         case R.id.ic_baseline_receipt_long_24:
                             selectedFragment = new ReserveFragment();
+                            getSupportActionBar().setTitle("Reserve");
                             break;
                         case R.id.ic_baseline_sports_24:
                             selectedFragment = new AcademyFragment();
+                            getSupportActionBar().setTitle("Academy");
                             break;
                         case R.id.ic_baseline_sports_soccer_24:
                             selectedFragment = new LeagueFragment();
+                            getSupportActionBar().setTitle("League");
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,selectedFragment).commit();

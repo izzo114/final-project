@@ -56,8 +56,8 @@ public class Adapteracadmy extends FirebaseRecyclerAdapter<acadm,Adapteracadmy.a
        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+//انت معايا
+//ايوةةةة
                 Intent profilintent = new Intent(v.getContext(), Acadmy_details.class);
                 profilintent.putExtra("visite_league_details", getRef(position).getKey());
                 v.getContext().startActivity(profilintent);

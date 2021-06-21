@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.login2.ADD_LEAGUE;
+import com.example.login2.Mainprof;
 import com.example.login2.R;
 import com.example.login2.SliderAdapter;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
@@ -43,7 +44,7 @@ public class HomeFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ADD_LEAGUE.class);
+                Intent intent = new Intent(getActivity(), Mainprof.class);
                 startActivity(intent);
             }
         });

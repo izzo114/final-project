@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Pair;
@@ -54,8 +55,10 @@ public class Login extends AppCompatActivity {
     private final static int RC_SIGN_IN = 123;
     private FirebaseAuth mAuth;
     ProgressDialog pd;
+    SharedPreferences sharedPreferences;
 
-  /*  @Override
+
+    @Override
     protected void onStart() {
         super.onStart();
 
@@ -65,7 +68,7 @@ public class Login extends AppCompatActivity {
             startActivity(Iintent);
 
         }
-    }*/
+    }
 
 
     @Override
@@ -74,6 +77,7 @@ public class Login extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
+        sharedPreferences=getSharedPreferences("myPref",MODE_PRIVATE);
         //initialize facebook sdk
         //FacebookSdk.sdkInitialize(Login.this);
         //initialize database
@@ -109,6 +113,7 @@ public class Login extends AppCompatActivity {
         Guest = findViewById(R.id.guest);
         ForgetPass = findViewById(R.id.forgetPass);
        // mAuth = FirebaseAuth.getInstance();
+
 
         findViewById(R.id.google).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -323,7 +328,7 @@ public class Login extends AppCompatActivity {
 
 
         final String userEnteredUsername = username.getEditText().getText().toString().trim();
-        String userEnteredPassword = password.getEditText().getText().toString().trim();
+        final String userEnteredPassword = password.getEditText().getText().toString().trim();
 
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference("user");
 
@@ -339,14 +344,41 @@ public class Login extends AppCompatActivity {
                     String passwordFromDB = dataSnapshot.child(userEnteredUsername).child("password").getValue(String.class);
 
                     if (passwordFromDB.equals(userEnteredPassword)){
+
+                       String nameFromDB = dataSnapshot.child(userEnteredUsername).child("name").getValue(String.class);
+                        String usernameFromDB = dataSnapshot.child(userEnteredUsername).child("username").getValue(String.class);
+                        String phonenoFromDB = dataSnapshot.child(userEnteredUsername).child("phoneno").getValue(String.class);
+                       String emailFromDB = dataSnapshot.child(userEnteredUsername).child("email").getValue(String.class);
+
+
                         pd.setMessage("logging in...");
                         pd.show();
                         password.setError(null);
                         password.setErrorEnabled(false);
 
+
+                        SharedPreferences.Editor  editor=sharedPreferences.edit();
+                        editor.putString("naame",nameFromDB);
+                        editor.putString("useername",usernameFromDB);
+                        editor.putString("phoone",phonenoFromDB);
+                        editor.putString("emaail",emailFromDB);
+                        editor.putString("paassword",passwordFromDB);
+                        editor.apply();
+
+
+
                         Intent intentt=new Intent (Login.this,Project.class);
                         startActivity(intentt);
                         finish();
+/*
+                        intentt.putExtra("name",nameFromDB);
+                        intentt.putExtra("username",usernameFromDB);
+                        intentt.putExtra("phoneno",phonenoFromDB);
+                        intentt.putExtra("emailll",emailFromDB);
+                        intentt.putExtra("password",passwordFromDB);*/
+
+
+
                     }else {
                         password.setError("wrong password");
                         password.requestFocus();
