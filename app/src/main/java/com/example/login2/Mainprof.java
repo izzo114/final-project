@@ -2,6 +2,7 @@ package com.example.login2;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -23,50 +24,46 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-public class Mainprof extends AppCompatActivity {
+public class Mainprof extends AppCompatActivity implements View.OnClickListener {
 
-   // private DatabaseReference referencee;
+    // private DatabaseReference referencee;
 
 
-    TextInputLayout fullName,email,phoneno,password;
-    TextView fullNameLabel,usernameLabel;
+    TextInputLayout fullName, email, phoneno, password;
+    TextView fullNameLabel, usernameLabel;
     private FirebaseAuth mAuth;
     FirebaseUser currentUser;
     SharedPreferences sharedPreferences;
     Button signOut;
-
-
-
-
-
+    public CardView card1;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainprof);
-        sharedPreferences=getSharedPreferences("myPref",MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("myPref", MODE_PRIVATE);
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
-
+        card1 = (CardView) findViewById(R.id.c1);
+        card1.setOnClickListener(this);
 
 
         //Hooks
-        fullName=findViewById(R.id.full_name_profile);
-        email=findViewById(R.id.email_profile);
-        phoneno =findViewById(R.id.phone_no_profile);
-        password=findViewById(R.id.password_profile);
-        fullNameLabel=findViewById(R.id.fullname);
-        usernameLabel=findViewById(R.id.usernameProf);
+        fullName = findViewById(R.id.full_name_profile);
+        email = findViewById(R.id.email_profile);
+        phoneno = findViewById(R.id.phone_no_profile);
+        password = findViewById(R.id.password_profile);
+        fullNameLabel = findViewById(R.id.fullname);
+        usernameLabel = findViewById(R.id.usernameProf);
         signOut = findViewById(R.id.btn_signout);
 
 
-        String user_username=sharedPreferences.getString("useername",null);
-        String user_name=sharedPreferences.getString("naame",null);
-        String user_email=sharedPreferences.getString("emaail",null);
-        String user_phoneno=sharedPreferences.getString("phoone",null);
-        String user_paassword=sharedPreferences.getString("paassword",null);
-
+        String user_username = sharedPreferences.getString("useername", null);
+        String user_name = sharedPreferences.getString("naame", null);
+        String user_email = sharedPreferences.getString("emaail", null);
+        String user_phoneno = sharedPreferences.getString("phoone", null);
+        String user_paassword = sharedPreferences.getString("paassword", null);
 
 
         fullNameLabel.setText(user_name);
@@ -77,13 +74,27 @@ public class Mainprof extends AppCompatActivity {
         password.getEditText().setText(user_paassword);
 
 
-
     }
+
 
     public void LogOut(View view) {
         FirebaseAuth.getInstance().signOut();
-        Intent LoginActivity = new Intent(this,Login.class);
+        Intent LoginActivity = new Intent(this, Login.class);
         startActivity(LoginActivity);
         finish();
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        Intent i;
+
+        switch (v.getId()) {
+            case R.id.c1:
+                i = new Intent(this, booking.class);
+                startActivity(i);
+                break;
+
+        }
     }
 }

@@ -1,14 +1,18 @@
 package com.example.login2;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -20,13 +24,29 @@ public class SignUp extends AppCompatActivity {
     TextView CallLogin;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
+    FirebaseAuth auth;
+    RadioButton genderradioButton;
+    RadioGroup radioGroup ;
+    SharedPreferences sharedPreferences;
+
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_sign_up);
+        auth = FirebaseAuth.getInstance();
+//        admin = findViewById(R.id.admin);
+//        client = findViewById(R.id.client);
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        sharedPreferences=getSharedPreferences("myPref",MODE_PRIVATE);
+
+
+
+
         //*************************************************************************************
         regName=findViewById(R.id.fullname);
         regUsername=findViewById(R.id.username);
@@ -152,12 +172,30 @@ public class SignUp extends AppCompatActivity {
         String phoneno = regPhoneNo.getEditText().getText().toString();
         String password = regPassword.getEditText().getText().toString();
 
+            int selectedId = radioGroup.getCheckedRadioButtonId();
+            genderradioButton = (RadioButton) findViewById(selectedId);
+            if(selectedId==-1){
+                Toast.makeText(SignUp.this,"Nothing selected", Toast.LENGTH_SHORT).show();
+            }
+            else{
+//                Toast.makeText(SignUp.this,genderradioButton.getText(), Toast.LENGTH_SHORT).show();
+                UserHelperClass helperClass = new UserHelperClass(name,username,email,phoneno,password);
+                reference.child(genderradioButton.getText().toString()).child(username).setValue(helperClass);
+
+            }
 
 
-        UserHelperClass helperClass = new UserHelperClass(name,username,email,phoneno,password);
-        reference.child(username).setValue(helperClass);
+
 
         Toast.makeText(this, "Your Account has been created successfully", Toast.LENGTH_SHORT).show();
+        SharedPreferences.Editor  editor=sharedPreferences.edit();
+        editor.putString("naame",name);
+        editor.putString("useername",username);
+        editor.putString("phoone",phoneno);
+        editor.putString("emaail",email);
+        editor.putString("paassword",password);
+        editor.putString("userType",genderradioButton.getText().toString());
+        editor.apply();
 
         Intent intennt = new Intent(SignUp.this,Project.class);
 

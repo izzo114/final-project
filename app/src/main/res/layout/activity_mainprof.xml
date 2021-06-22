@@ -55,55 +55,17 @@
             android:layout_marginTop="-100dp"
             android:padding="20dp">
 
+
+
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/c1"
                 android:layout_width="0dp"
                 android:layout_height="125dp"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 app:cardBackgroundColor="#fece2f"
-                app:cardElevation="10dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="5dp">
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/ic_profile" />
-
-                    <TextView
-                        android:id="@+id/payment_label"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:fontFamily="@font/bungee"
-                        android:includeFontPadding="false"
-                        android:text="$128"
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:id="@+id/payment_desc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/payment_label"
-                        android:layout_centerHorizontal="true"
-                        android:fontFamily="@font/bungee"
-                        android:includeFontPadding="false"
-                        android:text="Balance"
-                        android:textSize="14sp" />
-                </RelativeLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_height="125dp"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                app:cardBackgroundColor="#fece2f"
-                app:cardElevation="10dp">
+                app:cardElevation="10dp"
+                app:cardCornerRadius="50dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -212,16 +174,18 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#fece2f"
                 android:fontFamily="@font/bungee"
-                android:text="Update" />
+                android:text="Update"
+                android:background="@drawable/custom_fb_button"
+                />
 
             <Button
                 android:id="@+id/btn_signout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#fece2f"
+                android:background="@drawable/custom_fb_button"
                 android:fontFamily="@font/bungee"
+                android:layout_marginTop="10dp"
                 android:onClick="LogOut"
                 android:text="Sign Out" />
 

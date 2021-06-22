@@ -8,8 +8,9 @@
         app:showAsAction="never" />
 
 
-    <item android:title="Add League"
+    <item
         android:id="@+id/addLeague"
-        app:showAsAction="always"
-        android:icon="@drawable/addtwo" />
+        android:icon="@drawable/addtwo"
+        android:title="Add League"
+        app:showAsAction="always" />
 </menu>

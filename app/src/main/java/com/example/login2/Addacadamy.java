@@ -2,6 +2,7 @@ package com.example.login2;
 
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -33,6 +34,7 @@ public class Addacadamy extends AppCompatActivity {
     FirebaseDatabase rootNode;
     DatabaseReference referencee = FirebaseDatabase.getInstance().getReference().child("Acadamy");
     StorageReference storageReference= FirebaseStorage.getInstance().getReference().child("image");
+    SharedPreferences sharedPreferences;
 
     private Uri imageuri;
     @Override
@@ -48,6 +50,8 @@ public class Addacadamy extends AppCompatActivity {
         price=findViewById(R.id.price);
         save=findViewById(R.id.save);
         imageView=findViewById(R.id.imageView);
+
+//        sharedPreferences=getSharedPreferences("myPref",MODE_PRIVATE);
 
 
 
@@ -120,6 +124,7 @@ public class Addacadamy extends AppCompatActivity {
 
 
     }
+
 
 
     private void choosepic() {

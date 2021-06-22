@@ -320,19 +320,43 @@ public class Login extends AppCompatActivity {
         if (!validateUsername() | !validatePassword()){
             return;
         }else {
-            isUser();
+            checkUser();
         }
 
     }
-    private void isUser() {
 
+    private void checkUser(){
+        final String userEnteredUsername = username.getEditText().getText().toString().trim();
+//        final String userType = null;
+
+        DatabaseReference reference1= FirebaseDatabase.getInstance().getReference();
+        reference1.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.child("user").child("Manager").child(userEnteredUsername).exists())
+                {
+                  isUser("Manager");
+                } else if (snapshot.child("user").child("Client").child(userEnteredUsername).exists())
+                {
+                    isUser("Client");
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getApplicationContext(), "error in db " + error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void isUser(String userType) {
 
         final String userEnteredUsername = username.getEditText().getText().toString().trim();
         final String userEnteredPassword = password.getEditText().getText().toString().trim();
 
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference("user");
-
-        Query checkUser = reference.orderByChild("username").equalTo(userEnteredUsername);
+        Query checkUser = reference.child(userType).orderByChild("username").equalTo(userEnteredUsername);
 
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -363,6 +387,7 @@ public class Login extends AppCompatActivity {
                         editor.putString("phoone",phonenoFromDB);
                         editor.putString("emaail",emailFromDB);
                         editor.putString("paassword",passwordFromDB);
+                        editor.putString("userType",userType);
                         editor.apply();
 
 

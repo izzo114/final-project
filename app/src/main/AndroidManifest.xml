@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Login2">
-        <activity android:name=".Mainprof"></activity>
+        <activity android:name=".booking"></activity>
+        <activity android:name=".Mainprof" />
         <activity android:name=".Acadmy_details" />
         <activity android:name=".Addacadamy" />
         <activity android:name=".Playground_Details" />
@@ -49,7 +50,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
     </application>
 
 </manifest>

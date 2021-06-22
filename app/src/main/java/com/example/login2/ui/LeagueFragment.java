@@ -1,6 +1,7 @@
 package com.example.login2.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -28,12 +29,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class LeagueFragment extends Fragment {
     private View leagueView;
     private adapter_league adapter;
     private RecyclerView myleaguelist;
     private DatabaseReference leagueref;
     FirebaseRecyclerOptions<leagues> options;
+    SharedPreferences sharedPreferences;
 
 
     @Nullable
@@ -44,6 +48,7 @@ public class LeagueFragment extends Fragment {
         myleaguelist.setLayoutManager(new LinearLayoutManager(getActivity()));
         leagueref = FirebaseDatabase.getInstance().getReference().child("league");
 
+        sharedPreferences = getActivity().getSharedPreferences("myPref", MODE_PRIVATE);
 
         Query queries = leagueref;
         options = new FirebaseRecyclerOptions.Builder<leagues>()
@@ -82,7 +87,13 @@ public class LeagueFragment extends Fragment {
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.main, menu);
         menu.findItem(R.id.action_settings);
-        super.onCreateOptionsMenu(menu, inflater);
+        //to hide items from menu items
+        String userType = sharedPreferences.getString("userType", null);
+        MenuItem addLeagueItem = menu.findItem(R.id.addLeague);
+        if (userType.equals("Client")) {
+            addLeagueItem.setVisible(false);
+            super.onCreateOptionsMenu(menu, inflater);
+        }
     }
 
     // handle item clicks on menu

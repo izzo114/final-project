@@ -1,6 +1,7 @@
 package com.example.login2.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -27,12 +28,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class AcademyFragment extends Fragment {
     private View leagueView;
     private Adapteracadmy adapter;
     private RecyclerView myleaguelist;
     private DatabaseReference leagueref;
     FirebaseRecyclerOptions<acadm> options;
+    SharedPreferences sharedPreferences;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,11 +47,14 @@ public class AcademyFragment extends Fragment {
         myleaguelist.setLayoutManager(new LinearLayoutManager(getActivity()));
         leagueref = FirebaseDatabase.getInstance().getReference().child("Acadamy");
 
+        sharedPreferences = getActivity().getSharedPreferences("myPref", MODE_PRIVATE);
+
+
         Query queries = leagueref;
         options = new FirebaseRecyclerOptions.Builder<acadm>()
                 .setQuery(queries, acadm.class)
                 .build();
-       adapter = new Adapteracadmy(options);
+        adapter = new Adapteracadmy(options);
         myleaguelist.setAdapter(adapter);
         queries.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -69,7 +77,8 @@ public class AcademyFragment extends Fragment {
 
         });
         return leagueView;
-}
+    }
+
     //enable options menu in this fragment
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -82,12 +91,20 @@ public class AcademyFragment extends Fragment {
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.main, menu);
         menu.findItem(R.id.action_settings);
+//to hide items from menu items
+        String userType = sharedPreferences.getString("userType",null);
+        MenuItem addLeagueItem = menu.findItem(R.id.addLeague);
+        if(userType.equals("Client")){
+            addLeagueItem.setVisible(false);
+        }
+
         super.onCreateOptionsMenu(menu, inflater);
     }
 
     // handle item clicks on menu
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
         switch (item.getItemId()) {
             case R.id.addLeague:
                 Intent intent = new Intent(getActivity(), Addacadamy.class);
