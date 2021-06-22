@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Login2">
-        <activity android:name=".booking"></activity>
+        <activity android:name=".CONTACTUS"></activity>
+        <activity android:name=".booking" />
         <activity android:name=".Mainprof" />
         <activity android:name=".Acadmy_details" />
         <activity android:name=".Addacadamy" />

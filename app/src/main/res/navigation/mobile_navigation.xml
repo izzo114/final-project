@@ -16,6 +16,11 @@
         android:name="com.example.login2.Mainprof"
         android:label="Profile"
         tools:layout="@layout/activity_mainprof"/>
+    <activity
+        android:id="@+id/nav_call"
+        android:name="com.example.login2.CONTACTUS"
+        android:label="Profile"
+        tools:layout="@layout/activity_c_o_n_t_a_c_t_u_s"/>
 
 
 </navigation>
