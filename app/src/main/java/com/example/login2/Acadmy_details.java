@@ -1,6 +1,10 @@
 package com.example.login2;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -87,5 +91,32 @@ public class Acadmy_details extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.proofiile,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.call:
+//makephonecall();
+
+                Intent intent=new Intent();
+                intent.setAction(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:"+profilephone.getText()));
+                startActivity(intent);
+
+                break;
+        }
+
+
+
+        return super.onOptionsItemSelected(item);
+
     }
 }

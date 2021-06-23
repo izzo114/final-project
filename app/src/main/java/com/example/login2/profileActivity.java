@@ -1,11 +1,16 @@
 package com.example.login2;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DataSnapshot;
@@ -48,6 +53,8 @@ public class profileActivity extends AppCompatActivity {
 
     }
 
+
+
     private void RetriveInformation() {
         referencee.child(recevierleague).addValueEventListener(new ValueEventListener() {
             @Override
@@ -86,4 +93,34 @@ public class profileActivity extends AppCompatActivity {
             }
         });
     }
+
+    
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.proofiile,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.call:
+//makephonecall();
+
+                Intent intent=new Intent();
+                intent.setAction(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:"+profilephone.getText()));
+                startActivity(intent);
+
+                break;
+        }
+
+
+
+        return super.onOptionsItemSelected(item);
+
+    }
+
+
 }

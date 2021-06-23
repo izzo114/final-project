@@ -9,6 +9,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:allowBackup="true"
@@ -20,11 +21,11 @@
         <activity android:name=".CONTACTUS"></activity>
         <activity android:name=".booking" />
         <activity android:name=".Mainprof" />
-        <activity android:name=".Acadmy_details" />
+        <activity android:name=".Acadmy_details" android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"/>
         <activity android:name=".Addacadamy" />
-        <activity android:name=".Playground_Details" />
+        <activity android:name=".Playground_Details" android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"/>
         <activity android:name=".ADDplayground" />
-        <activity android:name=".profileActivity" />
+        <activity android:name=".profileActivity" android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"/>
         <activity android:name=".ADD_LEAGUE" />
         <activity android:name=".Project" />
         <activity android:name=".SignUp" />
