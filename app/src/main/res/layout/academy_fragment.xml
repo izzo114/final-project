@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.AcademyFragment"
-    android:background="@android:color/holo_blue_bright">
+    android:background="@color/purple_200">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/acadmy_list"
         android:layout_width="match_parent"

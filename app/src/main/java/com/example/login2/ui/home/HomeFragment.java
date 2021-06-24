@@ -40,14 +40,7 @@ public class HomeFragment extends Fragment {
         sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
         sliderView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
         sliderView.startAutoCycle();
-        Button button =view.findViewById(R.id.add);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Mainprof.class);
-                startActivity(intent);
-            }
-        });
+
 
         return view;
     }
