@@ -92,8 +92,9 @@ public class LeagueFragment extends Fragment {
         MenuItem addLeagueItem = menu.findItem(R.id.addLeague);
         if (userType.equals("Client") ) {
             addLeagueItem.setVisible(false);
-            super.onCreateOptionsMenu(menu, inflater);
         }
+            super.onCreateOptionsMenu(menu, inflater);
+
     }
 
     // handle item clicks on menu

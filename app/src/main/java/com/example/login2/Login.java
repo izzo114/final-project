@@ -39,6 +39,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.security.PublicKey;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -58,10 +60,10 @@ public class Login extends AppCompatActivity {
     SharedPreferences sharedPreferences;
 
 
+
     @Override
     protected void onStart() {
         super.onStart();
-
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null){
             Intent Iintent = new Intent(getApplicationContext() , Project.class);
@@ -150,9 +152,8 @@ public class Login extends AppCompatActivity {
         Guest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent  intentGuest = new Intent(Login.this,Project.class);
-                startActivity(intentGuest);
-                finish();
+                seetGuest("Client");
+
             }
         });
 
@@ -168,6 +169,17 @@ public class Login extends AppCompatActivity {
         pd = new ProgressDialog(this);
 
 
+
+    }
+
+    private void seetGuest(String guestType){
+        guestType.equals("");
+        SharedPreferences.Editor  editor=sharedPreferences.edit();
+        editor.putString("userType",guestType);
+        editor.apply();
+        Intent  intentGuest = new Intent(Login.this,Project.class);
+        startActivity(intentGuest);
+        finish();
 
     }
 
@@ -251,10 +263,6 @@ public class Login extends AppCompatActivity {
 
 
 
-
-
-
-
    /* private void handleFacebookAccessToken(AccessToken token) {
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         mAuth.signInWithCredential(credential)
@@ -285,9 +293,6 @@ public class Login extends AppCompatActivity {
         }
                 
     }*/
-
-
-
 
 
     private boolean validateUsername(){
@@ -350,7 +355,7 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    private void isUser(String userType) {
+    private void isUser( String userType) {
 
         final String userEnteredUsername = username.getEditText().getText().toString().trim();
         final String userEnteredPassword = password.getEditText().getText().toString().trim();
@@ -388,6 +393,7 @@ public class Login extends AppCompatActivity {
                         editor.putString("emaail",emailFromDB);
                         editor.putString("paassword",passwordFromDB);
                         editor.putString("userType",userType);
+
                         editor.apply();
 
 

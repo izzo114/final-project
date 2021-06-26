@@ -88,9 +88,10 @@ public class ReserveFragment extends Fragment {
         //to hide items from menu items
         String userType = sharedPreferences.getString("userType",null);
         MenuItem addLeagueItem = menu.findItem(R.id.addLeague);
-        if(userType.equals("Client")){
+        if(userType.equals("Client") ){
             addLeagueItem.setVisible(false);
         }
+
         super.onCreateOptionsMenu(menu, inflater);
     }
 
