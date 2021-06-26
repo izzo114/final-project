@@ -344,7 +344,8 @@ public class Login extends AppCompatActivity {
                 } else if (snapshot.child("user").child("Client").child(userEnteredUsername).exists())
                 {
                     isUser("Client");
-
+                }else {
+                    isUser(userEnteredUsername);
                 }
             }
 
@@ -373,6 +374,8 @@ public class Login extends AppCompatActivity {
                     String passwordFromDB = dataSnapshot.child(userEnteredUsername).child("password").getValue(String.class);
 
                     if (passwordFromDB.equals(userEnteredPassword)){
+
+
 
                        String nameFromDB = dataSnapshot.child(userEnteredUsername).child("name").getValue(String.class);
                         String usernameFromDB = dataSnapshot.child(userEnteredUsername).child("username").getValue(String.class);
@@ -478,9 +481,7 @@ public class Login extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intentGoogle = new Intent(getApplicationContext() , Project.class);
-                            startActivity(intentGoogle);
-                            finish();
+                            seetGuest("Client");
 
                         } else {
                             // If sign in fails, display a message to the user.
